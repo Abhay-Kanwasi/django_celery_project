@@ -1,5 +1,3 @@
-# polls/tasks.py
-
 from celery import shared_task
 import time  # Simulating a time-consuming task
 
