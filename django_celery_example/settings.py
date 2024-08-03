@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-9%y*ty5pq2uj*5n^3hk7+1ztme7t&8j%+pgsy1_-v%n8xtu(mx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -147,3 +147,14 @@ CELERY_BROKER_URL = 'amqp://myuser:mypassword@127.0.0.1:5672//'
 CELERY_RESULT_BACKEND = 'rpc://'         # Use RabbitMQ for result backend
 CELERY_TIMEZONE = 'UTC'                  # Set the timezone
 
+# Cloud storage
+
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'mumbai_storage_finlens_hobbiate'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+
+from google.oauth2 import service_account
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    "./windy-tower-107013-0e52fb91ae99.json"
+)
